@@ -5,3 +5,10 @@ services:
 script:
   - docker build -t rcssa/node .
   - docker images rcssa/node
+
+before_deploy:
+  - docker login -u <username> -p <password>
+
+deploy:
+  provider: script
+  script: docker push
